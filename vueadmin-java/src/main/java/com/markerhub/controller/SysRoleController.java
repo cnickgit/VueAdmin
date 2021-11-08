@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,7 +64,7 @@ public class SysRoleController extends BaseController {
 	@PreAuthorize("hasAuthority('sys:role:save')")
 	public Result save(@Validated @RequestBody SysRole sysRole) {
 
-		sysRole.setCreated(LocalDateTime.now());
+		sysRole.setCreated(new Date());
 		sysRole.setStatu(Const.STATUS_ON);
 
 		sysRoleService.save(sysRole);
@@ -74,7 +75,7 @@ public class SysRoleController extends BaseController {
 	@PreAuthorize("hasAuthority('sys:role:update')")
 	public Result update(@Validated @RequestBody SysRole sysRole) {
 
-		sysRole.setUpdated(LocalDateTime.now());
+		sysRole.setUpdated(new Date());
 
 		sysRoleService.updateById(sysRole);
 

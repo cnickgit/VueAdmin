@@ -38,7 +38,7 @@ public class SysUser extends BaseEntity {
 
     private String city;
 
-    private LocalDateTime lastLogin;
+    private Data lastLogin;
 
     @TableField(exist = false)
     private List<SysRole> sysRoles = new ArrayList<>();

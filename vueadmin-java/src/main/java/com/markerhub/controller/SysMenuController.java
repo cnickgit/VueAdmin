@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -72,7 +73,7 @@ public class SysMenuController extends BaseController {
 	@PreAuthorize("hasAuthority('sys:menu:save')")
 	public Result save(@Validated @RequestBody SysMenu sysMenu) {
 
-		sysMenu.setCreated(LocalDateTime.now());
+		sysMenu.setCreated(new Date());
 
 		sysMenuService.save(sysMenu);
 		return Result.succ(sysMenu);
@@ -82,7 +83,7 @@ public class SysMenuController extends BaseController {
 	@PreAuthorize("hasAuthority('sys:menu:update')")
 	public Result update(@Validated @RequestBody SysMenu sysMenu) {
 
-		sysMenu.setUpdated(LocalDateTime.now());
+		sysMenu.setUpdated(new Date());
 
 		sysMenuService.updateById(sysMenu);
 

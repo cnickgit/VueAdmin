@@ -22,6 +22,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -71,7 +72,7 @@ public class SysUserController extends BaseController {
 	@PreAuthorize("hasAuthority('sys:user:save')")
 	public Result save(@Validated @RequestBody SysUser sysUser) {
 
-		sysUser.setCreated(LocalDateTime.now());
+		sysUser.setCreated(new Date());
 		sysUser.setStatu(Const.STATUS_ON);
 
 		// 默认密码
@@ -89,7 +90,7 @@ public class SysUserController extends BaseController {
 	@PreAuthorize("hasAuthority('sys:user:update')")
 	public Result update(@Validated @RequestBody SysUser sysUser) {
 
-		sysUser.setUpdated(LocalDateTime.now());
+		sysUser.setUpdated(new Date());
 
 		sysUserService.updateById(sysUser);
 		return Result.succ(sysUser);
@@ -138,7 +139,7 @@ public class SysUserController extends BaseController {
 		SysUser sysUser = sysUserService.getById(userId);
 
 		sysUser.setPassword(passwordEncoder.encode(Const.DEFULT_PASSWORD));
-		sysUser.setUpdated(LocalDateTime.now());
+		sysUser.setUpdated(new Date());
 
 		sysUserService.updateById(sysUser);
 		return Result.succ("");
@@ -155,7 +156,7 @@ public class SysUserController extends BaseController {
 		}
 
 		sysUser.setPassword(passwordEncoder.encode(passDto.getPassword()));
-		sysUser.setUpdated(LocalDateTime.now());
+		sysUser.setUpdated(new Date());
 
 		sysUserService.updateById(sysUser);
 		return Result.succ("");
