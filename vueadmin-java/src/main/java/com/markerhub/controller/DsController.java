@@ -18,4 +18,10 @@ public class DsController {
     public Result getDsData(@RequestParam("searchName") String searchName, @RequestParam("code") String code){
         return  dsService.getDsData(searchName,code);
     }
+
+    @GetMapping("/purchaseRecordsList")
+    @PreAuthorize("hasAuthority('zyj:ds:purchaseRecordsList')")
+    public Result getPurchaseRecordsList(@RequestParam("searchName") String searchName, @RequestParam("code") String code){
+        return  dsService.getPurchaseRecordsList(searchName,code);
+    }
 }

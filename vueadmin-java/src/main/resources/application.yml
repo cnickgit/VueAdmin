@@ -1,17 +1,18 @@
 server:
-  port: 8089
+  port: 9688
 # DataSource Config
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://182.92.126.206:3306/vueadmin?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+#    url: jdbc:mysql://182.92.126.206:3306/vueadmin?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/vueadmin?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
   redis:
 #    host: 182.92.126.206
     host: 127.0.0.1
     port: 6379
-#    password: 123456
+    password: 123456
     database: 0
 
 #  security:
