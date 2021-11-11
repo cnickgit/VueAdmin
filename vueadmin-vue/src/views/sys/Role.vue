@@ -208,7 +208,7 @@
 		created() {
 			this.getRoleList()
 
-			this.$axios.get('/sys/menu/list').then(res => {
+			this.$axios.get('sys/menu/list').then(res => {
 				this.permTreeData = res.data.data
 			})
 		},
@@ -251,7 +251,7 @@
 			},
 
 			getRoleList() {
-				this.$axios.get("/sys/role/list", {
+				this.$axios.get("sys/role/list", {
 					params: {
 						name: this.searchForm.name,
 						current: this.current,
@@ -268,7 +268,7 @@
 			submitForm(formName) {
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						this.$axios.post('/sys/role/' + (this.editForm.id?'update' : 'save'), this.editForm)
+						this.$axios.post('sys/role/' + (this.editForm.id?'update' : 'save'), this.editForm)
 							.then(res => {
 
 								this.$message({
@@ -290,7 +290,7 @@
 				});
 			},
 			editHandle(id) {
-				this.$axios.get('/sys/role/info/' + id).then(res => {
+				this.$axios.get('sys/role/info/' + id).then(res => {
 					this.editForm = res.data.data
 
 					this.dialogVisible = true
@@ -310,7 +310,7 @@
 
 				console.log(ids)
 
-				this.$axios.post("/sys/role/delete", ids).then(res => {
+				this.$axios.post("sys/role/delete", ids).then(res => {
 					this.$message({
 						showClose: true,
 						message: '恭喜你，操作成功',
@@ -324,7 +324,7 @@
 			permHandle(id) {
 				this.permDialogVisible = true
 
-				this.$axios.get("/sys/role/info/" + id).then(res => {
+				this.$axios.get("sys/role/info/" + id).then(res => {
 
 					this.$refs.permTree.setCheckedKeys(res.data.data.menuIds)
 					this.permForm = res.data.data
@@ -336,7 +336,7 @@
 
 				console.log(menuIds)
 
-				this.$axios.post('/sys/role/perm/' + this.permForm.id, menuIds).then(res => {
+				this.$axios.post('sys/role/perm/' + this.permForm.id, menuIds).then(res => {
 					this.$message({
 						showClose: true,
 						message: '恭喜你，操作成功',

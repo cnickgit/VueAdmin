@@ -63,7 +63,7 @@
 		},
 		methods: {
 			getUserInfo() {
-				this.$axios.get("/sys/userInfo").then(res => {
+				this.$axios.get("sys/userInfo").then(res => {
 					this.userInfo = res.data.data
 				})
 			},

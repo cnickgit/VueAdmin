@@ -79,7 +79,7 @@ router.beforeEach((to, from, next) => {
 
 
 	} else if(token && !hasRoute) {
-		axios.get("/sys/menu/nav", {
+		axios.get("sys/menu/nav", {
 			headers: {
 				Authorization: localStorage.getItem("token")
 			}

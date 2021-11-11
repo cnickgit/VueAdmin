@@ -231,7 +231,7 @@
 		created() {
 			this.getUserList()
 
-			this.$axios.get("/sys/role/list").then(res => {
+			this.$axios.get("sys/role/list").then(res => {
 				this.roleTreeData = res.data.data.records
 			})
 		},
@@ -274,7 +274,7 @@
 			},
 
 			getUserList() {
-				this.$axios.get("/sys/user/list", {
+				this.$axios.get("sys/user/list", {
 					params: {
 						username: this.searchForm.username,
 						current: this.current,
@@ -291,7 +291,7 @@
 			submitForm(formName) {
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						this.$axios.post('/sys/user/' + (this.editForm.id?'update' : 'save'), this.editForm)
+						this.$axios.post('sys/user/' + (this.editForm.id?'update' : 'save'), this.editForm)
 							.then(res => {
 
 								this.$message({
@@ -312,7 +312,7 @@
 				});
 			},
 			editHandle(id) {
-				this.$axios.get('/sys/user/info/' + id).then(res => {
+				this.$axios.get('sys/user/info/' + id).then(res => {
 					this.editForm = res.data.data
 
 					this.dialogVisible = true
@@ -332,7 +332,7 @@
 
 				console.log(ids)
 
-				this.$axios.post("/sys/user/delete", ids).then(res => {
+				this.$axios.post("sys/user/delete", ids).then(res => {
 					this.$message({
 						showClose: true,
 						message: '恭喜你，操作成功',
@@ -347,7 +347,7 @@
 			roleHandle (id) {
 				this.roleDialogFormVisible = true
 
-				this.$axios.get('/sys/user/info/' + id).then(res => {
+				this.$axios.get('sys/user/info/' + id).then(res => {
 					this.roleForm = res.data.data
 
 					let roleIds = []
@@ -363,7 +363,7 @@
 
 				console.log(roleIds)
 
-				this.$axios.post('/sys/user/role/' + this.roleForm.id, roleIds).then(res => {
+				this.$axios.post('sys/user/role/' + this.roleForm.id, roleIds).then(res => {
 					this.$message({
 						showClose: true,
 						message: '恭喜你，操作成功',
@@ -383,7 +383,7 @@
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
-					this.$axios.post("/sys/user/repass", id).then(res => {
+					this.$axios.post("sys/user/repass", id).then(res => {
 						this.$message({
 							showClose: true,
 							message: '恭喜你，操作成功',

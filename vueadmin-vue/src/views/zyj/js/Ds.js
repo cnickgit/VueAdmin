@@ -14,7 +14,7 @@ export default {
             this.getPurchaseRecordsList()
         },
         getDsData() {
-            this.$axios.get("/zyj/ds/list?searchName="+this.searchName+'&code='+ 'aa').then(res => {
+            this.$axios.get("zyj/ds/list?searchName="+this.searchName+'&code='+ 'aa').then(res => {
                 if(res.data.code === 200 && res.status === 200) {
                     this.dsInfo = res.data.data.data
                     console.log('dsInfo:--->', this.dsInfo)
@@ -22,8 +22,7 @@ export default {
             })
         },
         getPurchaseRecordsList() {
-            this.$axios.get("/zyj/ds/purchaseRecordsList?searchName="+this.searchName+'&code='+ 'aa').then(res => {
-                debugger
+            this.$axios.get("zyj/ds/purchaseRecordsList?searchName="+this.searchName+'&code='+ 'aa').then(res => {
                 if(res.data.code === 200 && res.status === 200) {
                     console.log('res:--->', res)
                     let purchaseRecords = res.data.data.data.purchaseRecords

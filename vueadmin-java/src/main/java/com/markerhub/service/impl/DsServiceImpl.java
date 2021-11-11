@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.markerhub.common.dto.PcConstant;
 import com.markerhub.common.lang.Result;
 import com.markerhub.service.DsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@Slf4j
 public class DsServiceImpl implements DsService {
     @Override
     public Result getDsData(String searchName, String code) {
@@ -30,6 +32,7 @@ public class DsServiceImpl implements DsService {
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(PcConstant.DS_ADDRESS, request, String.class);
         jsonObject = JSONObject.parseObject(response.getBody());
+        log.info("getDsData--------------->"+jsonObject.toJSONString());
         return Result.succ(jsonObject);
     }
 
@@ -47,6 +50,7 @@ public class DsServiceImpl implements DsService {
         HttpEntity<String> request = new HttpEntity<String>(map.toString(), headers);
         ResponseEntity<String> response = restTemplate.postForEntity(PcConstant.PURCHASE_RECORDS_ADDRESS, request, String.class);
         jsonObject = JSONObject.parseObject(response.getBody());
+        log.info("getPurchaseRecordsList--------------->"+jsonObject.toJSONString());
         return Result.succ(jsonObject);
     }
 }

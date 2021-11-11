@@ -197,14 +197,14 @@
 		},
 		methods: {
 			getMenuTree() {
-				this.$axios.get("/sys/menu/list").then(res => {
+				this.$axios.get("sys/menu/list").then(res => {
 					this.tableData = res.data.data
 				})
 			},
 			submitForm(formName) {
 				this.$refs[formName].validate((valid) => {
 					if (valid) {
-						this.$axios.post('/sys/menu/' + (this.editForm.id?'update' : 'save'), this.editForm)
+						this.$axios.post('sys/menu/' + (this.editForm.id?'update' : 'save'), this.editForm)
 							.then(res => {
 
 								this.$message({
@@ -225,7 +225,7 @@
 				});
 			},
 			editHandle(id) {
-				this.$axios.get('/sys/menu/info/' + id).then(res => {
+				this.$axios.get('sys/menu/info/' + id).then(res => {
 					this.editForm = res.data.data
 
 					this.dialogVisible = true
@@ -240,7 +240,7 @@
 				this.resetForm('editForm')
 			},
 			delHandle(id) {
-				this.$axios.post("/sys/menu/delete/" + id).then(res => {
+				this.$axios.post("sys/menu/delete/" + id).then(res => {
 					this.$message({
 						showClose: true,
 						message: '恭喜你，操作成功',
